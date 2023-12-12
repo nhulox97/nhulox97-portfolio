@@ -1,15 +1,12 @@
 ---
 import "@Styles/global.css";
-// import "@Styles/app.css";
-import { CATPPUCCIN_COLORS } from "@Configs/theme.config";
-import type { ColorAppearance } from "@Types/app.type";
+import Header from "@Components/Header.astro";
 
 interface Props {
   title: string;
-  theme: ColorAppearance;
 }
 
-const { title, theme } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -25,24 +22,49 @@ const { title, theme } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <article class="app">
+    <Header />
+    <main class="app">
       <slot />
-    </article>
+    </main>
   </body>
 </html>
 
-<style define:vars={{ ...CATPPUCCIN_COLORS[theme] }} is:global>
+<style is:global>
   body {
     background-color: var(--bgCol);
+    color: var(--fgCol);
+    font-family: "Nunito Sans", sans-serif;
+  --bgAltCol: "#181825";
+  --bgCol: "#1e1e2e";
+  --fgAltCol: "#989fb5";
+  --fgCol: "#cdd6f4";
+  --primaryCol: "#fab387";
+  --primaryAltCol: "#cf8e65";
+  }
+
+  main {
+  max-width: 1100px;
+  width: 95%;
+  margin: 0 auto;
   }
 
   .app {
     align-items: center;
     display: flex;
-    color: var(--fgCol);
     flex-direction: column;
-    font-family: "Nunito Sans", sans-serif;
     justify-content: center;
     padding: 10px 20px;
   }
+
+body.dark {
+    --bgAltCol: "#e6e9ef";
+    --bgCol: "#eff1f5";
+    --fgAltCol: "#37394d";
+    --fgCol: "#4c4f69";
+    --primaryCol: "#f5833d";
+    --primaryAltCol: "#d46e31";
+}
+
+#body.light {
+}
 </style>
