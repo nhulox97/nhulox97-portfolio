@@ -1,0 +1,48 @@
+---
+import "@Styles/global.css";
+// import "@Styles/app.css";
+import { CATPPUCCIN_COLORS } from "@Configs/theme.config";
+import type { ColorAppearance } from "@Types/app.type";
+
+interface Props {
+  title: string;
+  theme: ColorAppearance;
+}
+
+const { title, theme } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,700;0,6..12,900;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,700;1,6..12,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <article class="app">
+      <slot />
+    </article>
+  </body>
+</html>
+
+<style define:vars={{ ...CATPPUCCIN_COLORS[theme] }} is:global>
+  body {
+    background-color: var(--bgCol);
+  }
+
+  .app {
+    align-items: center;
+    display: flex;
+    color: var(--fgCol);
+    flex-direction: column;
+    font-family: "Nunito Sans", sans-serif;
+    justify-content: center;
+    padding: 10px 20px;
+  }
+</style>

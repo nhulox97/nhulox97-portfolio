@@ -1,16 +1,13 @@
 ---
-
+import AppLayout from "@Layouts/AppLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<style>
+  h2 {
+    color: var(--primaryCol);
+  }
+</style>
+<AppLayout title="nhulox97 - Sergio Bernal" theme="dark">
+  <h1>nhulox97 - Sergio Bernal</h1>
+  <h2>Back-End Engineer</h2>
+</AppLayout>
