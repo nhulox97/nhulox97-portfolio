@@ -1,33 +1,31 @@
 ---
 import Navbar from "./Navbar.astro";
-import ThemeSwitcher from './ThemeSwitcher.astro';
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 ---
+
 <header>
   <div class="title">
-    <h1>nhulox97 </h1>
+    <h1>nhulox97</h1>
   </div>
   <Navbar />
-  <ThemeSwitcher/>
-  
+  <ThemeSwitcher />
 </header>
 
 <style>
-header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  max-width: 1150px;
-  margin: 0 auto;
-  padding-block: 1.5em;
-  padding-inline: 2em;
-  width: 95%;
-}
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding-block: 1.5em;
+    padding-inline: 2em;
+    width: 95%;
+  }
 
-header > .title > * {
-  color: var(--primaryCol);
-  font-size: 2.5rem;
-  font-weight: 500;
-}
+  header > .title > * {
+    color: var(--primary-col);
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
 </style>
-
-

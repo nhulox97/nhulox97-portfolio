@@ -2,59 +2,130 @@
 import { Sun, Moon } from "lucide-preact";
 ---
 
-<button id="switchTheme">
-  <Sun class="sun" />  <Moon class="moon" />
-</button>
+<div id="switchTheme">
+  <label class="theme-switch" for="checkbox">
+    <input type="checkbox" id="checkbox" />
+    <div class="slider">
+      <Sun class="feather feather-sun" size={20} />
+      <Moon class="feather feather-moon" size={20} />
+    </div>
+  </label>
+</div>
 
 <style>
-  #switchTheme {
-    border: 0;
-    background: none;
+  .theme-switch-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
-  :global(.light) .sun { fill: black }
 
-  :global(.light) .moon { fill: transparent; }
+  .theme-switch {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
 
-  :global(.dark) .sun { fill: transparent; }
-  :global(.dark) .moon { fill: white; }
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: var(--theme-slider-col);
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: 0.4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--bg-alt-col);
+  }
+
+  input + .slider {
+    background-color: var(--bg-alt-col);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider > * {
+    color: var(--fg-col);
+    position: absolute;
+    transition:
+      opacity 0.2s ease 0s,
+      transform 0.35s ease 0s;
+    pointer-events: none;
+  }
+
+  .feather-moon {
+    opacity: 0;
+    left: 3px;
+    bottom: 7.5px;
+    transform: translateX(4px);
+  }
+
+  .feather-sun {
+    opacity: 1;
+    right: 6px;
+    bottom: 7.5px;
+    transform: translateX(0px);
+  }
+
+  input:checked + .slider .feather-moon {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  input:checked + .slider .feather-sun {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
 </style>
 
 <script>
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-      return 'light';
-  })();
+  const themeToggle = document.querySelector(
+    '.theme-switch input[type="checkbox"]',
+  );
+  const currentTheme = localStorage.getItem("theme");
 
-  const body = document.getElementById('body');
+  if (currentTheme) {
+    document.documentElement.classList.add(currentTheme);
 
-  if (theme === 'light') {
-    body.classList.remove('dark');
-    body.classList.add('light');
-  } else {
-    body.classList.remove('light');
-    body.classList.add('dark');
+    if (currentTheme === "dark") {
+      themeToggle.checked = true;
+    }
   }
 
-  window.localStorage.setItem('theme', theme);
-
-  const handleToggleClick = () => {
-  const body = document.getElementById('body');
-
-    const isDark = body.classList.contains("dark");
-    if (isDark) {
-    body.classList.remove('dark');
-    body.classList.add('light');
+  function switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-    body.classList.remove('light');
-    body.classList.add('dark');
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      localStorage.setItem("theme", "light");
     }
-    localStorage.setItem("theme", isDark ? "dark" : "light");
   }
 
-  document.getElementById("switchTheme").addEventListener("click", handleToggleClick);
+  themeToggle.addEventListener("change", switchTheme, false);
 </script>
