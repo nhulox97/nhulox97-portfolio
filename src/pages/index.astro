@@ -1,13 +1,116 @@
 ---
 import AppLayout from "@Layouts/AppLayout.astro";
+import { Image } from "astro:assets";
+import meImg from "@Assets/me1.png";
+// import meImg from "@Asset"
 ---
 
+<AppLayout title="nhulox97 - Sergio Bernal">
+  <section class="section-me">
+    <div class="landing-container">
+      <div class="landing-photo">
+        <Image class="landing-me" src={meImg} alt="Me" />
+      </div>
+      <div class="landing-info">
+        <p>Hi, I'm</p>
+        <h1>Sergio Bernal</h1>
+        <h2>Back-End Engineer</h2>
+        <div class="landing-cta">
+          <button class="btn btn-cv">Download CV</button>
+          <button class="btn btn-contact">Contact</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</AppLayout>
+
 <style>
-  h2 {
+  .section-me {
+    height: 100%;
+  }
+
+  .landing-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3em;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .landing-container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .landing-container > div > * {
+    margin-block: 5px;
+  }
+
+  .landing-photo > .landing-me {
+    clip-path: circle();
+    height: 300px;
+    width: 300px;
+  }
+
+  .landing-info > p {
+    font-weight: 600;
+    color: var(--fg-alt-col);
+  }
+
+  .landing-info > h2 {
     color: var(--primary-col);
   }
+
+  .landing-cta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-block-start: 10px;
+  }
+
+  .btn {
+    background-color: --fg-col;
+    border: 1.25px solid var(--fg-col);
+    border-radius: 32px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-inline: 1em;
+    padding-inline: 18px;
+    padding-block: 10px;
+    transition: 0.4s;
+  }
+
+  .btn-cv:hover {
+    background-color: var(--fg-col);
+    color: var(--bg-col);
+  }
+
+  .btn-contact {
+    background-color: var(--fg-col);
+    color: var(--bg-col);
+  }
+
+  .btn-contact:hover {
+    background-color: var(--fg-alt-col);
+    border-color: var(--fg-alt-col);
+    color: var(--bg-alt-col);
+  }
+
+  @media (max-width: 705px) {
+    .landing-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25em;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .landing-photo > .landing-me {
+      height: 200px;
+      width: 200px;
+    }
+  }
 </style>
-<AppLayout title="nhulox97 - Sergio Bernal">
-  <h1>nhulox97 - Sergio Bernal</h1>
-  <h2>Back-End Engineer</h2>
-</AppLayout>

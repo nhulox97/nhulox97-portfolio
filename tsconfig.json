@@ -9,7 +9,9 @@
       "@Pages/*": ["./src/pages/*"],
       "@Styles/*": ["./src/styles/*"],
       "@Configs/*": ["./src/configs/*"],
-      "@Stores/*": ["./src/stores/*"]
+      "@Stores/*": ["./src/stores/*"],
+      "@Hooks/*": ["./src/hooks/*"],
+      "@Assets/*": ["./src/assets/*"]
     }
   }
 }

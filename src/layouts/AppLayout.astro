@@ -22,7 +22,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header  />
+    <Header />
     <main class="app">
       <slot />
     </main>
@@ -77,19 +77,19 @@ const { title } = Astro.props;
     background-color: var(--bg-col);
     color: var(--fg-col);
     font-family: "Nunito Sans", sans-serif;
+    height: 90vh;
   }
 
   main {
     max-width: 1100px;
     width: 95%;
+    height: 100%;
     margin: 0 auto;
   }
 
   .app {
-    align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 10px 20px;
   }
 </style>
