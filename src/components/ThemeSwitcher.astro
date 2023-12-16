@@ -103,7 +103,7 @@ import { Sun, Moon } from "lucide-preact";
 
 <script>
   const themeToggle = document.querySelector(
-    '.theme-switch input[type="checkbox"]',
+    '.theme-switch input[type="checkbox"]'
   );
   const currentTheme = localStorage.getItem("theme");
 
@@ -111,10 +111,12 @@ import { Sun, Moon } from "lucide-preact";
     document.documentElement.classList.add(currentTheme);
 
     if (currentTheme === "dark") {
+      // @ts-ignore
       themeToggle.checked = true;
     }
   }
 
+  // @ts-ignore
   function switchTheme(e) {
     if (e.target.checked) {
       document.documentElement.classList.remove("light");
@@ -127,5 +129,6 @@ import { Sun, Moon } from "lucide-preact";
     }
   }
 
+  // @ts-ignore
   themeToggle.addEventListener("change", switchTheme, false);
 </script>
