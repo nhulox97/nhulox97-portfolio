@@ -1,12 +1,13 @@
 ---
-import { GithubIcon, LinkedinIcon } from "lucide-preact";
-import AppLayout from "@Layouts/AppLayout.astro";
 import { Image } from "astro:assets";
-import meImg from "@Assets/me1.jpg";
-// import meImg from "@Asset"
+import AppLayout from "@Layouts/AppLayout.astro";
+import { profileData, socialIcons } from "@Data/profile";
+import type { SocialType } from "@AppTypes/data";
+
+const meImg = profileData.avatar.landing;
 ---
 
-<AppLayout title="nhulox97 - Sergio Bernal">
+<AppLayout title={profileData.pageTitle}>
   <section class="section-me">
     <div class="landing-container">
       <div class="landing-photo">
@@ -14,8 +15,8 @@ import meImg from "@Assets/me1.jpg";
       </div>
       <div class="landing-info">
         <p>Hi, I'm</p>
-        <h1>Sergio Bernal</h1>
-        <h2>Back-End Engineer</h2>
+        <h1>{profileData.info.name}</h1>
+        <h2>{profileData.info.title}</h2>
         <div class="landing-cta">
           <a
             class="btn btn-cv"
@@ -25,16 +26,18 @@ import meImg from "@Assets/me1.jpg";
           <button class="btn btn-contact">Contact Info</button>
         </div>
         <div class="landing-socials">
-          <a
-            href="https://www.linkedin.com/in/sergio-abc/"
-            class="social"
-            target="_blank"
-          >
-            <LinkedinIcon size={28} />
-          </a>
-          <a href="https://github.com/nhulox97" class="social" target="_blank">
-            <GithubIcon size={28} />
-          </a>
+          {
+            Object.entries(profileData.social).map(([index, url]) => {
+              const icon = index as SocialType;
+              const Icon = socialIcons[icon];
+
+              return (
+                <a href={url} class="social" target="_blank">
+                  <Icon size={28} />
+                </a>
+              );
+            })
+          }
         </div>
       </div>
     </div>

@@ -11,7 +11,9 @@
       "@Configs/*": ["./src/configs/*"],
       "@Stores/*": ["./src/stores/*"],
       "@Hooks/*": ["./src/hooks/*"],
-      "@Assets/*": ["./src/assets/*"]
+      "@Assets/*": ["./src/assets/*"],
+      "@AppTypes/*": ["./src/types/*"],
+      "@Data/*": ["./src/data/*"]
     }
   }
 }

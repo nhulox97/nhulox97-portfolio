@@ -1,5 +1,5 @@
 import React from "preact/compat";
-import { $isNavOpen } from "@Stores/ui.store";
+import { $isNavOpen } from "@Stores/ui";
 import { useStore } from "@nanostores/preact";
 import useWindowDimensions from "@Hooks/useWindowDimensions";
 
