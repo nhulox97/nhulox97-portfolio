@@ -6,7 +6,7 @@ import useWindowDimensions from "@Hooks/useWindowDimensions";
 export default function Nav() {
   const isNavOpen = useStore($isNavOpen);
   const { width } = useWindowDimensions();
-  const showNav = width && width > 600;
+  const showNav = width && width > 725;
 
   if (!isNavOpen && !showNav) {
     return null;

@@ -1,7 +1,8 @@
 ---
+import { GithubIcon, LinkedinIcon } from "lucide-preact";
 import AppLayout from "@Layouts/AppLayout.astro";
 import { Image } from "astro:assets";
-import meImg from "@Assets/me1.png";
+import meImg from "@Assets/me1.jpg";
 // import meImg from "@Asset"
 ---
 
@@ -17,7 +18,19 @@ import meImg from "@Assets/me1.png";
         <h2>Back-End Engineer</h2>
         <div class="landing-cta">
           <button class="btn btn-cv">Download CV</button>
-          <button class="btn btn-contact">Contact</button>
+          <button class="btn btn-contact">Contact Info</button>
+        </div>
+        <div class="landing-socials">
+          <a
+            href="https://www.linkedin.com/in/sergio-abc/"
+            class="social"
+            target="_blank"
+          >
+            <LinkedinIcon size={28} />
+          </a>
+          <a href="https://github.com/nhulox97" class="social" target="_blank">
+            <GithubIcon size={28} />
+          </a>
         </div>
       </div>
     </div>
@@ -51,17 +64,35 @@ import meImg from "@Assets/me1.png";
 
   .landing-photo > .landing-me {
     clip-path: circle();
-    height: 300px;
-    width: 300px;
+    height: 350px;
+    width: 350px;
   }
 
   .landing-info > p {
     font-weight: 600;
     color: var(--fg-alt-col);
+    font-size: 1.1em;
   }
 
   .landing-info > h2 {
     color: var(--primary-col);
+  }
+
+  .landing-socials {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    padding-block-start: 10px;
+  }
+
+  .landing-socials > .social {
+    color: var(--fg-alt-col);
+  }
+
+  .landing-socials > .social:hover {
+    color: var(--fg-col);
+    transition: color 0.2s ease-in-out;
+    transtion: -webkit-color 0.2s ease-in-out;
   }
 
   .landing-cta {
@@ -72,7 +103,6 @@ import meImg from "@Assets/me1.png";
   }
 
   .btn {
-    background-color: --fg-col;
     border: 1.25px solid var(--fg-col);
     border-radius: 32px;
     font-size: 12px;
@@ -99,18 +129,16 @@ import meImg from "@Assets/me1.png";
     color: var(--bg-alt-col);
   }
 
-  @media (max-width: 705px) {
+  @media (max-width: 725px) {
     .landing-container {
       display: flex;
       flex-direction: column;
       gap: 1.25em;
     }
-  }
 
-  @media (max-width: 600px) {
     .landing-photo > .landing-me {
-      height: 200px;
-      width: 200px;
+      height: 300px;
+      width: 300px;
     }
   }
 </style>

@@ -29,16 +29,25 @@ import NavToggle from "./NavToggle.tsx";
   }
 
   .nav-element {
-    font-size: 1rem;
+    background: none;
+    border-bottom: 2px solid transparent;
+    font-size: 1.2rem;
     font-weight: 500;
     margin-inline: 15px;
+  }
+
+  .nav-element:hover {
+    color: var(--primary-alt-col);
+    border-bottom: 2px solid var(--primary-alt-col);
+    transition: border-bottom 0.2s ease-in-out;
+    transtion: -webkit-border-bottom 0.2s ease-in-out;
   }
 
   .nav-toggle {
     display: none;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 725px) {
     .nav-toggle {
       display: flex;
       z-index: 2;
@@ -48,9 +57,6 @@ import NavToggle from "./NavToggle.tsx";
       transform: translateY(-5px);
       transition: -webkit-transform 0.2s ease-in-out;
       transition: transform 0.2s ease-in-out;
-      transition:
-        transform 0.2s ease-in-out,
-        -webkit-transform 0.2s ease-in-out;
     }
 
     .nav-element {
@@ -59,7 +65,7 @@ import NavToggle from "./NavToggle.tsx";
 
     .nav-links {
       align-items: center;
-      background-color: var(--bg-alt-col);
+      background-color: var(--bg-alt-tr-col);
       border: 1px solid var(--primary-alt-col);
       border-radius: 10%;
       display: flex;
