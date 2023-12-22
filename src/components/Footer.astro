@@ -1,0 +1,29 @@
+---
+interface Props {
+  username: string;
+}
+
+const { username } = Astro.props;
+---
+
+<footer>
+  <p>Copyright © 2023 {username}. All rights reserved.</p>
+  <p>
+    Made with ❤️ by <a href="https://github.com/nhulox97">nhulox97</a>
+  </p>
+</footer>
+
+<style>
+  footer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-block-end: 3em;
+  }
+
+  @media (max-width: 725px) {
+    p {
+      font-size: 12px;
+    }
+  }
+</style>

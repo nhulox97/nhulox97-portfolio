@@ -14,10 +14,18 @@ export default function Nav() {
 
   return (
     <ul className={"nav-links"}>
-      <li className={"nav-element"}>About</li>
-      <li className={"nav-element"}>Experience</li>
-      <li className={"nav-element"}>Contact</li>
-      <li className={"nav-element"}>Blog</li>
+      <li className={"nav-element"}>
+        <a href="#me">About</a>
+      </li>
+      <li className={"nav-element"}>
+        <a href="#bio">Experience</a>
+      </li>
+      <li className={"nav-element"}>
+        <a>Contact</a>
+      </li>
+      <li className={"nav-element"}>
+        <a>Blog</a>
+      </li>
     </ul>
   );
 }

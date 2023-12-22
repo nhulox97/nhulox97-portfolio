@@ -1,14 +1,17 @@
 ---
 import { Image } from "astro:assets";
+import { MedalIcon, GraduationCapIcon } from "lucide-preact";
 import AppLayout from "@Layouts/AppLayout.astro";
 import { profileData, socialIcons } from "@Data/profile";
 import type { SocialType } from "@AppTypes/data";
+import Tile from "@Components/Tile.astro";
 
 const meImg = profileData.avatar.landing;
+const bioMeImg = profileData.avatar.bio!;
 ---
 
-<AppLayout title={profileData.pageTitle}>
-  <section class="section-me">
+<AppLayout title={profileData.pageTitle} username={profileData.info.name}>
+  <section id="me" class="section-me">
     <div class="landing-container">
       <div class="landing-photo">
         <Image class="landing-me" src={meImg} alt="Me" />
@@ -42,17 +45,49 @@ const meImg = profileData.avatar.landing;
       </div>
     </div>
   </section>
+  <section id="bio" class="section-bio">
+    <div class="bio-container">
+      <div class="bio-title">
+        <p>Get to know me</p>
+        <h1>About me</h1>
+      </div>
+      <div class="bio-info">
+        <div class="bio-photo">
+          <Image class="bio-me" src={bioMeImg} alt="Me bio" />
+        </div>
+        <div class="bio-more">
+          <div class="bio-tiles">
+            <Tile
+              Icon={MedalIcon}
+              title="Experience"
+              line1={profileData.info.yearsOfExperience}
+              line2={profileData.info.title}
+            />
+            <Tile
+              Icon={GraduationCapIcon}
+              title="Education"
+              line1={profileData.info.education}
+            />
+          </div>
+          <p class="bio-desc">
+            {profileData.info.bio}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </AppLayout>
 
 <style>
-  .section-me {
-    height: 100%;
+  section {
+    height: 90dvh;
+    display: flex;
+    flex-direction: column;
   }
 
   .landing-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     gap: 3em;
     justify-content: center;
     height: 100%;
@@ -136,16 +171,94 @@ const meImg = profileData.avatar.landing;
     color: var(--bg-alt-col);
   }
 
+  .bio-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+
+  .bio-info {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+  }
+
+  .bio-photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bio-photo > .bio-me {
+    border-radius: 20px;
+    height: 300px;
+    width: 300px;
+  }
+
+  .bio-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bio-title > h1 {
+    color: var(--primary-col);
+  }
+
+  .bio-title > p {
+    font-size: 16px;
+  }
+
+  .bio-more {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  .bio-tiles {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+  }
+
+  .bio-desc {
+    color: var(--fg-col);
+    font-size: 18px;
+    text-align: justify;
+  }
+
   @media (max-width: 725px) {
+    section {
+      height: fit-content;
+      margin-block-end: 3em;
+    }
+
     .landing-container {
       display: flex;
       flex-direction: column;
       gap: 1.25em;
     }
 
+    .bio-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bio-photo > .bio-me {
+      height: 280px;
+      width: 280px;
+    }
+
+    .bio-tiles {
+      flex-direction: column;
+    }
+
     .landing-photo > .landing-me {
-      height: 300px;
-      width: 300px;
+      height: 280px;
+      width: 280px;
     }
   }
 </style>

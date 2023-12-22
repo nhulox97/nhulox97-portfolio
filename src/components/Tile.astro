@@ -1,0 +1,43 @@
+---
+import type { LucideIcon } from "lucide-preact";
+interface Props {
+  title: string;
+  line1: string;
+  line2?: string;
+  Icon: LucideIcon;
+}
+
+const { Icon, title, line1, line2 } = Astro.props;
+---
+
+<div class="tile">
+  <Icon class="tile-icon" size={32} />
+  <h3 class="tile-title">{title}</h3>
+  <p class="tile-desc">{line1}</p>
+  {line2 ? <p class="tile-desc">{line2}</p> : null}
+</div>
+
+<style>
+  .tile {
+    align-items: center;
+    border: 1.5px solid var(--fg-alt-col);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    padding-block: 20px;
+    width: 100%;
+  }
+
+  .tile-icon {
+    margin-block-end: 15px;
+  }
+
+  .tile-title {
+    color: var(--secondary-col);
+    margin-block-end: 10px;
+  }
+
+  .tile-desc {
+    font-size: 17px;
+  }
+</style>

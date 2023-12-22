@@ -29,7 +29,7 @@ export type ProfilePersonalInfoArgs = {
   /**
    * Hardly recommended to only put degrees names, not institutions
    */
-  education: string | string[];
+  education: string;
 };
 
 export type SocialType = "github" | "gitlab" | "linkedin";
