@@ -1,6 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import { MedalIcon, GraduationCapIcon } from "lucide-preact";
+import {
+  MedalIcon,
+  GraduationCapIcon,
+  MailIcon,
+  LinkedinIcon,
+} from "lucide-preact";
 import AppLayout from "@Layouts/AppLayout.astro";
 import { profileData, socialIcons } from "@Data/profile";
 import type { SocialType } from "@AppTypes/data";
@@ -26,7 +31,9 @@ const bioMeImg = profileData.avatar.bio!;
             href="https://github.com/nhulox97/resume/blob/main/Sergio.Bernal.Resume.pdf"
             target="_blank">Download CV</a
           >
-          <button class="btn btn-contact">Contact Info</button>
+          <button class="btn btn-contact">
+            <a href="#contact">Contact Info</a></button
+          >
         </div>
         <div class="landing-socials">
           {
@@ -48,8 +55,8 @@ const bioMeImg = profileData.avatar.bio!;
   <section id="bio" class="section-bio">
     <div class="bio-container">
       <div class="bio-title">
-        <p>Get to know me</p>
-        <h1>About me</h1>
+        <p>Get To Know More</p>
+        <h1>About Me</h1>
       </div>
       <div class="bio-info">
         <div class="bio-photo">
@@ -72,6 +79,26 @@ const bioMeImg = profileData.avatar.bio!;
           <p class="bio-desc">
             {profileData.info.bio}
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="section-contact">
+    <div class="contact-container">
+      <div class="contact-title">
+        <p>Get In Touch</p>
+        <h1>Contact Me</h1>
+      </div>
+      <div class="contact-cta">
+        <div class="contact-card">
+          <MailIcon size={28} />
+          <a href={`mailto:${profileData.info.email}`}
+            >{profileData.info.email}</a
+          >
+        </div>
+        <div class="contact-card">
+          <LinkedinIcon size={28} />
+          <a href={profileData.social.linkedin} target="_blank">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -202,12 +229,10 @@ const bioMeImg = profileData.avatar.bio!;
     align-items: center;
   }
 
-  .bio-title > h1 {
-    color: var(--primary-col);
-  }
-
   .bio-title > p {
+    color: var(--fg-alt-col);
     font-size: 16px;
+    margin-block-end: 20px;
   }
 
   .bio-more {
@@ -229,16 +254,71 @@ const bioMeImg = profileData.avatar.bio!;
     text-align: justify;
   }
 
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 4em;
+  }
+
+  .contact-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-title > p {
+    color: var(--fg-alt-col);
+    margin-block-end: 20px;
+  }
+
+  .contact-cta {
+    border: 1.5px solid var(--fg-alt-col);
+    border-radius: 32px;
+    display: flex;
+    gap: 5rem;
+    flex-direction: row;
+    padding: 20px 50px;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .contact-card > a {
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+  }
+
+  .contact-card > a:hover {
+    color: var(--primary-col);
+    border-bottom: 2px solid var(--primary-alt-col);
+    transition: border-bottom 0.2s ease-in-out;
+    transition: -webkit-border-bottom 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    transtion: -webkit-color 0.2s ease-in-out;
+  }
+
   @media (max-width: 725px) {
     section {
       height: fit-content;
       margin-block-end: 3em;
+      padding-block-start: 10dvh;
     }
 
     .landing-container {
       display: flex;
       flex-direction: column;
       gap: 1.25em;
+    }
+
+    .bio-container {
+      gap: 5rem;
     }
 
     .bio-info {
@@ -259,6 +339,12 @@ const bioMeImg = profileData.avatar.bio!;
     .landing-photo > .landing-me {
       height: 280px;
       width: 280px;
+    }
+
+    .contact-cta {
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 </style>

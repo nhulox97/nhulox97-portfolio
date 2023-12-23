@@ -21,18 +21,29 @@ import Navbar from "./Navbar.astro";
     width: 95%;
   }
 
-  header > .title > * {
+  header > .title > h1 {
     color: var(--primary-col);
     font-size: 2rem;
     font-weight: 700;
   }
 
-  header > .title > *:hover {
+  header > .title > h1:hover {
     color: var(--primary-alt-col);
   }
 
   header > .nav {
     display: flex;
     flex-direction: row;
+  }
+
+  @media (max-width: 725px) {
+    header {
+      position: fixed;
+      z-index: 1;
+    }
+
+    header > .title > h1 {
+      font-size: 1.5em;
+    }
   }
 </style>

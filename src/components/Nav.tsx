@@ -5,6 +5,8 @@ import useWindowDimensions from "@Hooks/useWindowDimensions";
 
 export default function Nav() {
   const isNavOpen = useStore($isNavOpen);
+  const toggleNav = () => $isNavOpen.set(!isNavOpen);
+
   const { width } = useWindowDimensions();
   const showNav = width && width > 725;
 
@@ -14,16 +16,16 @@ export default function Nav() {
 
   return (
     <ul className={"nav-links"}>
-      <li className={"nav-element"}>
+      <li onClick={toggleNav} className={"nav-element"}>
         <a href="#me">About</a>
       </li>
-      <li className={"nav-element"}>
+      <li onClick={toggleNav} className={"nav-element"}>
         <a href="#bio">Experience</a>
       </li>
-      <li className={"nav-element"}>
-        <a>Contact</a>
+      <li onClick={toggleNav} className={"nav-element"}>
+        <a href="#contact">Contact</a>
       </li>
-      <li className={"nav-element"}>
+      <li onClick={toggleNav} className={"nav-element"}>
         <a>Blog</a>
       </li>
     </ul>
