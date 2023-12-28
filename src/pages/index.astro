@@ -121,13 +121,15 @@ const bioMeImg = profileData.avatar.bio!;
   section {
     display: flex;
     flex-direction: column;
-    height: 90dvh;
+    min-height: 90dvh;
+    overflow: visible;
   }
 
   section + #skills {
     margin-top: 5em;
     justify-content: center;
     min-height: 90dvh;
+    overflow: visible;
   }
 
   .landing-container {
@@ -342,12 +344,7 @@ const bioMeImg = profileData.avatar.bio!;
       height: fit-content;
       margin-block-end: 3em;
       padding-block-start: 10dvh;
-    }
-
-    section + #skills {
-      height: fit-content;
-      margin-block-end: 3em;
-      padding-block-start: 10dvh;
+      overflow: auto;
     }
 
     .landing-container {
