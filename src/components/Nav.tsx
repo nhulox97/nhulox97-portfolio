@@ -17,10 +17,13 @@ export default function Nav() {
   return (
     <ul className={"nav-links"}>
       <li onClick={toggleNav} className={"nav-element"}>
-        <a href="#me">About</a>
+        <a href="#bio">About</a>
       </li>
       <li onClick={toggleNav} className={"nav-element"}>
-        <a href="#bio">Experience</a>
+        <a href="#skills">Experience</a>
+      </li>
+      <li onClick={toggleNav} className={"nav-element"}>
+        <a href="#skills">Skills</a>
       </li>
       <li onClick={toggleNav} className={"nav-element"}>
         <a href="#contact">Contact</a>

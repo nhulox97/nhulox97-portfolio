@@ -22,7 +22,179 @@ export const profileData: ProfileDataArgs = {
     linkedin: "https://www.linkedin.com/in/sergio-abc/",
   },
   pageTitle: "nhulox97 - Sergio Bernal",
-} as const;
+  skills: [
+    {
+      type: "programming languages",
+      tools: [
+        {
+          icon: "devicon-javascript-plain",
+          name: "Javascript",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-typescript-plain",
+          name: "Typescript",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-rust-plain",
+          name: "Rust",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-python-plain",
+          name: "Python",
+          level: "intermediate",
+        },
+      ],
+    },
+    {
+      type: "cloud",
+      tools: [
+        {
+          icon: "devicon-amazonwebservices-original",
+          name: "AWS",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-heroku-original",
+          name: "Heroku",
+          level: "intermediate",
+        },
+      ],
+    },
+    {
+      type: "backend",
+      tools: [
+        {
+          icon: "devicon-nestjs-plain",
+          name: "NestJS",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-express-original",
+          name: "Express",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-nodejs-plain",
+          name: "NodeJS",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-graphql-plain",
+          name: "GraphQL",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-postgresql-plain",
+          name: "PostgreSQL",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-mongodb-plain",
+          name: "MongoDB",
+          level: "intermediate",
+        },
+      ],
+    },
+    {
+      type: "development",
+      tools: [
+        {
+          icon: "devicon-docker-plain",
+          name: "Docker",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-git-plain",
+          name: "Git",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-github-original",
+          name: "GitHub",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-gitlab-plain",
+          name: "GitLab",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-npm-original-wordmark",
+          name: "NPM",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-linux-plain",
+          name: "Linux",
+          level: "intermediate",
+        },
+      ],
+    },
+    {
+      type: "frontend",
+      tools: [
+        {
+          icon: "devicon-react-original",
+          name: "React",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-nextjs-plain",
+          name: "NextJS",
+          level: "intermediate",
+        },
+        // {
+        //   icon: "nf-oct-rocket",
+        //   name: "Astro",
+        //   level: "intermediate",
+        // },
+        {
+          icon: "devicon-html5-plain",
+          name: "HTML",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-css3-plain",
+          name: "CSS",
+          level: "intermediate",
+        },
+      ],
+    },
+    {
+      type: "other",
+      tools: [
+        {
+          icon: "devicon-vscode-plain",
+          name: "VSCode",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-vim-plain",
+          name: "Vim/Neovim",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-jest-plain",
+          name: "Jest",
+          level: "advanced",
+        },
+        {
+          icon: "devicon-jira-plain",
+          name: "Jira",
+          level: "intermediate",
+        },
+        {
+          icon: "devicon-confluence-plain",
+          name: "Confluence",
+          level: "intermediate",
+        },
+      ],
+    },
+  ],
+};
 
 export const socialIcons = {
   github: GithubIcon,

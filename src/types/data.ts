@@ -66,13 +66,20 @@ export type ProfileExperienceArgs = {
 
 export type ToolArgs = {
   name: string;
-  level: string;
-  icon: string;
+  level: "basic" | "intermediate" | "advanced";
+  icon?: string;
 };
 
-export type ProfileToolArgs = {
+export type ProfileSkillArgs = {
   //INFO: Add new types as needed
-  type: "frontend" | "backend" | "database" | "development" | "cloud" | "other";
+  type:
+    | "frontend"
+    | "backend"
+    | "database"
+    | "development"
+    | "cloud"
+    | "other"
+    | "programming languages";
   tools: ToolArgs[];
 };
 
@@ -82,5 +89,5 @@ export type ProfileDataArgs = {
   pageTitle: string;
   info: ProfilePersonalInfoArgs;
   social: ProfileSocialArgs;
-  tools?: ProfileToolArgs;
+  skills: ProfileSkillArgs[];
 };

@@ -1,0 +1,77 @@
+---
+import { type ProfileSkillArgs } from "@AppTypes/data";
+
+interface Props {
+  skill: ProfileSkillArgs;
+}
+
+const { skill } = Astro.props;
+---
+
+<div class="skill">
+  <h2>{skill.type}</h2>
+  <div class="skill-tools">
+    {
+      skill.tools.map((tool) => (
+        <div class="skill-tool">
+          <i class={`${tool.icon}`} />
+          <div class="skill-tool-detail">
+            <h3>{tool.name}</h3>
+            <p>{tool.level}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .skill {
+    border: 1.5px solid var(--fg-alt-col);
+    border-radius: 16px;
+    display: flex;
+    flex: 1 0 30%;
+    flex-direction: column;
+    gap: 2em;
+    padding: 15px 20px;
+    width: 90%;
+  }
+
+  .skill > h2 {
+    font-size: 1.4rem;
+    color: var(--primary-alt-col);
+  }
+
+  .skill-tools {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.5em;
+    justify-content: space-evenly;
+  }
+
+  .skill-tool {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8em;
+  }
+
+  .skill-tool > i {
+    font-size: 1.1rem;
+  }
+
+  .skill-tool-detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skill-tool-detail > h3 {
+    font-size: 1.1rem;
+  }
+
+  .skill-tool-detail > p {
+    color: var(--fg-alt-col);
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+</style>

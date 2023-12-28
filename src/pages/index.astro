@@ -10,6 +10,7 @@ import AppLayout from "@Layouts/AppLayout.astro";
 import { profileData, socialIcons } from "@Data/profile";
 import type { SocialType } from "@AppTypes/data";
 import Tile from "@Components/Tile.astro";
+import Skill from "@Components/Skill.astro";
 
 const meImg = profileData.avatar.landing;
 const bioMeImg = profileData.avatar.bio!;
@@ -83,9 +84,20 @@ const bioMeImg = profileData.avatar.bio!;
       </div>
     </div>
   </section>
+  <section id="skills" class="section-skills">
+    <div class="section-container">
+      <div class="section-title">
+        <p>Explore my</p>
+        <h1>Skills</h1>
+      </div>
+      <div class="skills">
+        {profileData.skills.map((skill) => <Skill skill={skill} />)}
+      </div>
+    </div>
+  </section>
   <section id="contact" class="section-contact">
-    <div class="contact-container">
-      <div class="contact-title">
+    <div class="section-container">
+      <div class="section-title">
         <p>Get In Touch</p>
         <h1>Contact Me</h1>
       </div>
@@ -107,9 +119,15 @@ const bioMeImg = profileData.avatar.bio!;
 
 <style>
   section {
-    height: 90dvh;
     display: flex;
     flex-direction: column;
+    min-height: 90dvh;
+  }
+
+  section + #skills {
+    margin-top: 5em;
+    justify-content: center;
+    min-height: 90dvh;
   }
 
   .landing-container {
@@ -117,7 +135,8 @@ const bioMeImg = profileData.avatar.bio!;
     flex-direction: row;
     gap: 3em;
     justify-content: center;
-    height: 100%;
+    align-items: center;
+    height: 90dvh;
   }
 
   .landing-container > div {
@@ -202,7 +221,7 @@ const bioMeImg = profileData.avatar.bio!;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100%;
+    height: 90dvh;
   }
 
   .bio-info {
@@ -254,7 +273,7 @@ const bioMeImg = profileData.avatar.bio!;
     text-align: justify;
   }
 
-  .contact-container {
+  .section-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,15 +282,20 @@ const bioMeImg = profileData.avatar.bio!;
     gap: 4em;
   }
 
-  .contact-title {
+  #contact > .section-container {
+    height: 90dvh;
+  }
+
+  .section-title {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.6em;
   }
 
-  .contact-title > p {
+  .section-title > p {
+    font-size: 1em;
     color: var(--fg-alt-col);
-    margin-block-end: 20px;
   }
 
   .contact-cta {
@@ -304,8 +328,23 @@ const bioMeImg = profileData.avatar.bio!;
     transtion: -webkit-color 0.2s ease-in-out;
   }
 
+  .skills {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    width: 100%;
+  }
+
   @media (max-width: 725px) {
     section {
+      height: fit-content;
+      margin-block-end: 3em;
+      padding-block-start: 10dvh;
+    }
+
+    section + #skills {
       height: fit-content;
       margin-block-end: 3em;
       padding-block-start: 10dvh;
